@@ -1,7 +1,7 @@
 {
 	"name": "relic",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "A small in-memory cache",
-	"author": "@chielkunkels",
+	"author": "chielkunkels",
 	"main": "index.js"
 }
