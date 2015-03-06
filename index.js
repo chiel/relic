@@ -18,14 +18,17 @@ Relic.prototype.set = function(key, value, ttl){
 
 	if (record.timeout){
 		clearTimeout(record.timeout);
+		record = {};
 	}
 
-	record.expires = ttl + (+new Date());
-	record.value = value;
-	record.timeout = setTimeout(function(){
-		this.del(key);
-	}.bind(this), ttl);
+	if (ttl){
+		record.expires = ttl + (+new Date());
+		record.timeout = setTimeout(function(){
+			this.del(key);
+		}.bind(this), ttl);
+	}
 
+	record.value = value;
 	this.cache[key] = record;
 };
 
@@ -47,4 +50,3 @@ Relic.prototype.del = function(key){
 };
 
 module.exports = Relic;
-
